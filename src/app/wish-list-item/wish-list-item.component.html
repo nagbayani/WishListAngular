@@ -1,0 +1,21 @@
+<!-- add an li item for every item in "items" array -->
+<li class="d-flex justify-content-between">
+  <div class="form-check">
+    <!-- binding CSS to ngClass on label, cross out item if fulfilled  -->
+    <label class="form-check-label" [ngClass]="cssClasses">
+      <input
+        class="checkbox"
+        type="checkbox"
+        [checked]="wish.isCompleted"
+        (click)="toggleFulfilled()"
+      />
+      {{ wish.wishText }}
+    </label>
+  </div>
+
+  <div>
+    <button type="button" class="btn-close" (click)="removeWish()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+</li>

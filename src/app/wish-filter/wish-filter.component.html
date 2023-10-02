@@ -1,0 +1,12 @@
+<div class="col-sm-2">
+
+  <!-- filter is the ngModel, component'  s updateFilter is the ngModelChange -->
+  <select 
+  class="form-select" 
+  [(ngModel)]="listFilter"
+  (ngModelChange)="updateFilter($event)">
+    <option value="0">All</option>
+    <option value="1">Unfulfilled</option>
+    <option value="2">Fulfilled</option>
+  </select>
+</div>
