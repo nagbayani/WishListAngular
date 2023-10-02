@@ -4,7 +4,7 @@ import { Observable, Subject } from 'rxjs';
 
 // this class can be injected into other classes
 @Injectable({
-  // declare where we want to provide this event service
+  // declare where we want to provide this event service, root means we want to provide it in root module
   providedIn: 'root',
 })
 export class EventService {
