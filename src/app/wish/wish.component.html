@@ -1,0 +1,21 @@
+<div class="container">
+  <!-- add-wish-form component emits an event, event is handled here, app's items pushes the event emitted from add-wish-form component -->
+  <add-wish-form (addWish)="items.push($event)"></add-wish-form>
+  <!-- event binding syntax -->
+
+  <div class="row mt-3">
+    <!-- wish-filter component emits an event, event is handled here, app's "filter" is set to the event emitted from wish-filter component -->
+    <wish-filter [(filter)]="filter"></wish-filter>
+    <!-- two-way binding syntax -->
+    <!-- filter in app component binds to INPUT in wish-filter component -->
+    <!-- filter in wish-filter OUTPUT will emit the event to app.component    -->
+  </div>
+
+  <div class="row mt-3">
+    <div class="col-sm-7">
+      <!-- wish-list component, input visibleItems into wish-list component -->
+      <wish-list [wishes]="items.filter(filter)"> </wish-list>
+      <!-- Event emitter from Wish-Filter emits a callback function (that tells which items are visible), callback function is handled here, app's visibleItems is set to the callback function  -->
+    </div>
+  </div>
+</div>

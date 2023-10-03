@@ -1,0 +1,77 @@
+<form
+  class="container p-5"
+  [formGroup]="contactForm"
+  (ngSubmit)="$event.preventDefault(); submitForm()"
+>
+  <!-- name field -->
+  <div class="mb-3">
+    <label class="form-label">Your name</label>
+    <input type="text" class="form-control" formControlName="senderName" />
+    <div
+      *ngIf="
+        contactForm.get('senderName')?.invalid &&
+        (contactForm.get('senderName')?.dirty ||
+          contactForm.get('senderName')?.touched)
+      "
+    >
+      <small
+        class="text-danger"
+        *ngIf="contactForm.get('senderName')?.hasError('required')"
+        >This field is required
+      </small>
+    </div>
+  </div>
+
+  <!-- email field -->
+  <div class="mb-3">
+    <label class="form-label">Your email address</label>
+    <input type="text" class="form-control" formControlName="senderEmail" />
+
+    <!-- ?. null checking operator -->
+    <!-- check for null, invalid email, touched -->
+    <div
+      *ngIf="
+        contactForm.get('senderEmail')?.invalid &&
+        (contactForm.get('senderEmail')?.dirty ||
+          contactForm.get('senderEmail')?.touched)
+      "
+    >
+      <small
+        class="text-danger"
+        *ngIf="contactForm.get('senderEmail')?.hasError('required')"
+        >This field is required
+      </small>
+      <small
+        class="text-danger"
+        *ngIf="contactForm.get('senderEmail')?.hasError('email')"
+        >Please enter your email address
+      </small>
+      <small
+        class="text-danger"
+        *ngIf="contactForm.get('senderEmail')?.hasError('invalidEmailDomain')"
+        >Email provider is not allowed
+      </small>
+    </div>
+  </div>
+
+  <!-- message field -->
+  <div class="mb-3">
+    <label class="form-label">Message</label>
+    <textarea
+      class="form-control"
+      rows="3"
+      formControlName="senderMessage"
+    ></textarea>
+  </div>
+
+  <!-- submit button -->
+  <div class="mb-3">
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="contactForm.invalid"
+    >
+      Send Message
+    </button>
+  </div>
+</form>
